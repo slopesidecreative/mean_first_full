@@ -2,29 +2,47 @@
 console.log('friends.js loaded');
 
 var mongoose = require('mongoose');
-// schema (no validations)
-var FriendSchema = new mongoose.Schema({
- first_name: String,
- last_name: String,
- birthday: Date
-}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
-// register model
-var Friend = mongoose.model('Friend',FriendSchema);
+var validate = require('mongoose-validator');
 
-// VALIDATIONS:
-// var CommentSchema = new mongoose.Schema({
-//       _post: {
-//          type: mongoose.Schema.Types.ObjectId,
-//          ref: 'Post'
-//       },
-//      name: {
-//         type: String,
-//         required: true,
-//         validate: nameValidator
-//      },
-//      content: {
-//         type: String,
-//         required: true,
-//         validate: postValidator
-//      }
-//   }, {timestamps:true });
+
+var nameValidator = [
+  validate({
+    validator: 'isLength',
+    arguments: [2, 50],
+    message: 'Name should be between {ARGS[0]} and {ARGS[1]} characters'
+  }),
+  validate({
+    validator: 'isAlphanumeric',
+    passIfEmpty: true,
+    message: 'Name should contain alpha-numeric characters only'
+  })
+];
+
+// schema (no validations)
+// var FriendSchema = new mongoose.Schema({
+//  first_name: String,
+//  last_name: String,
+//  birthday: Date
+// }, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
+// register model
+
+
+
+var FriendSchema = new mongoose.Schema({
+      first_name: {
+        type: String,
+        required: true,
+        validate: nameValidator
+      },
+     last_name: {
+        type: String,
+        required: true,
+        validate: nameValidator
+     },
+     birthday: {
+        type: Date,
+        required: true
+     }
+  }, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
+
+  var Friend = mongoose.model('Friend',FriendSchema);
