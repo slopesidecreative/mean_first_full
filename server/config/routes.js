@@ -3,15 +3,21 @@ console.log('routes.js is loaded.');
 
 // var Item =  require('../controllers/item.js');
 var Friends =  require('../controllers/friends.js');
+console.log('Friends conroller: ',Friends);
 
-module.exports =  function(app) {
+module.exports = function(app) {
+console.log('routes: ',app);
    // "/"
    // Root - show all
    app.get('/', function (req, res){
-      console.log('ROUTE: /');
-      res.json('welcome to FRIENDS');
-      // console.log(' GET show /  ');
-      // Item.show(req,res);
+      // res.json('welcome to FRIENDS');
+      console.log(' GET show /  ');
+      Friends.show(req,res);
+   });
+   app.get('/friends', function (req, res){
+      // res.json('welcome to FRIENDS');
+      console.log(' GET show /  ');
+      Friends.show(req,res);
    });
    // app.get('/friends', friends.index);
    // app.get('/friends/:id', friends.show);

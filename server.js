@@ -16,7 +16,7 @@ app.set('views', root + '/client/static');
 
 // fires up connection to db, loads models, loads model controllers
 require('./server/config/mongoose.js');
-
+//console.log('first: ',app);
 require('./server/config/routes.js')(app);
 
 // var routes_setter = require('./server/config/routes.js');
