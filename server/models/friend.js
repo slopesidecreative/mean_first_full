@@ -10,3 +10,21 @@ var FriendSchema = new mongoose.Schema({
 }, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
 // register model
 var Friend = mongoose.model('Friend',FriendSchema);
+
+
+// var CommentSchema = new mongoose.Schema({
+//       _post: {
+//          type: mongoose.Schema.Types.ObjectId,
+//          ref: 'Post'
+//       },
+//      name: {
+//         type: String,
+//         required: true,
+//         validate: nameValidator
+//      },
+//      content: {
+//         type: String,
+//         required: true,
+//         validate: postValidator
+//      }
+//   }, {timestamps:true });

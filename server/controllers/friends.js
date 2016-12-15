@@ -8,9 +8,9 @@ var Friends     =  mongoose.model('Friend');
 
 module.exports = {
 // "/"
-// Root - show all
-show: function (req, res){
-   console.log('ITEM->SHOW');
+// Index - show all
+index: function (req, res){
+   console.log('FRIEND->INDEX');
    Friends.find({}, function(err, data) {
       console.log('DB returned: ',data);
       if(err){
@@ -20,7 +20,27 @@ show: function (req, res){
          res.json(data);
       }
    })
+},
+/*
+   GET /friends/:id
+   Show - view a single friend by ID.
+*/
+show: function (req, res){
+   console.log('FRIEND->SHOW');
+   Item.findOne(
+      {
+         _id: req.params.id
+      },
+      function(err, data) {
+      if(err){
+         console.log('error ${err}');
+      }else{
+         // SAME VIEW DISPLAYS ONE OR ALL
+         res.json(data);
+      }
+   })
 }
+//,
 // ,
 // /* POST
 //    /items

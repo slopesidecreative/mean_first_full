@@ -7,19 +7,36 @@ var Friends =  require('../controllers/friends.js');
 console.log('Friends conroller: ',Friends);
 
 module.exports = function(app) {
+
    // "/"
    // Root - show all
+   // TO BE HANDLED BY ANGULAR
    app.get('/', function (req, res){
-      // res.json('welcome to FRIENDS');
-      console.log(' GET show /  ');
-      Friends.show(req,res);
+      res.json('welcome to FRIENDS');
    });
+
+   // GET /friends
+   // returns all friends
    app.get('/friends', function (req, res){
-      console.log(' GET show /  ');
+      console.log(' GET index /  ');
+      Friends.index(req,res);
+   });
+   /* GET /friends/:id
+      View a single friend by ID.
+   */
+   app.get('/friends/:id', function (req, res){
+      console.log('GET one /items/:id ', req.params.id);
       Friends.show(req,res);
    });
-   // app.get('/friends', friends.index);
-   // app.get('/friends/:id', friends.show);
+
+   // app.put('/friends/:id', friends.update);
+
+
+
+
+
+   // + app.get('/friends', friends.index);
+   // + app.get('/friends/:id', friends.show);
    // app.post('/friends', friends.create);
    // app.put('/friends/:id', friends.update);
    // app.delete('/friends/:id', friends.delete);
