@@ -10,7 +10,7 @@ module.exports = function(app) {
 
    // "/"
    // Root - show all
-   // TO BE HANDLED BY ANGULAR
+   // TO BE HANDLED BY ANGULAR, right???
    app.get('/', function (req, res){
       res.json('welcome to FRIENDS');
    });
@@ -22,24 +22,42 @@ module.exports = function(app) {
       Friends.index(req,res);
    });
    /* GET /friends/:id
-      View a single friend by ID.
+      Show: view a single friend by ID.
    */
    app.get('/friends/:id', function (req, res){
-      console.log('GET one /items/:id ', req.params.id);
+      console.log('GET show /friends/:id ', req.params.id);
       Friends.show(req,res);
    });
-
-   // app.put('/friends/:id', friends.update);
-
-
-
-
+   /* POST
+      /items
+      Create a new item based on form submission.
+   */
+   app.post('/friends', function (req, res){
+      console.log('POST create /friends');
+      Friends.create(req,res);
+   });
+   /*
+      POST /items/:id
+      PUT: process editing a friend by ID.
+   */
+   app.put('/friends/:id', function (req, res){
+      console.log('POST update /items/update');
+      Friends.update(req,res);
+   });
+   /*
+      DELETE /friends/:id
+      Delete: process deleting a friend by ID.
+   */
+   app.put('/friends/:id', function (req, res){
+      console.log('DELETE /friends/:id');
+      Friends.delete(req,res);
+   });
 
    // + app.get('/friends', friends.index);
    // + app.get('/friends/:id', friends.show);
-   // app.post('/friends', friends.create);
-   // app.put('/friends/:id', friends.update);
-   // app.delete('/friends/:id', friends.delete);
+   // + app.post('/friends', friends.create);
+   // + app.put('/friends/:id', friends.update);
+   // + app.delete('/friends/:id', friends.delete);
 
 }
 

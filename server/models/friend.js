@@ -11,7 +11,7 @@ var FriendSchema = new mongoose.Schema({
 // register model
 var Friend = mongoose.model('Friend',FriendSchema);
 
-
+// VALIDATIONS:
 // var CommentSchema = new mongoose.Schema({
 //       _post: {
 //          type: mongoose.Schema.Types.ObjectId,
