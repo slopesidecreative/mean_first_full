@@ -1,7 +1,11 @@
+/* friends controller */
 console.log('friends controller');
-// WE NEED TO ADD A FEW lines of code here!
-// How does a controller talk to mongoose and get a model?
-// Build out the methods in the friendsControllers below
+
+var mongoose   =  require('mongoose');
+var moment     =  require('moment');
+
+var Friend     =  mongoose.model('Friend');
+
 function FriendsController(){
   this.index = function(req,res){
     //your code here

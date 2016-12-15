@@ -13,6 +13,7 @@ app.use(express.static(root + '/bower_components'));
 app.set('views', root + '/client/static');
 // set EJS as the templating engine
 //app.set('view engine','ejs');
+
 // fires up connection to db, loads models, loads model controllers
 require('./server/config/mongoose.js');
 

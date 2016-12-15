@@ -8,9 +8,16 @@ var root          =     __dirname;
 var models_path   =     path.join(root, './../models');
 var reg           =     new RegExp( ".js$", "i" );
 
-
-mongoose.connect(dburi,function(){
-   console.log('mongoose connected');
+/*
+* Connect to the database
+*/
+mongoose.connect( dburi );
+/*
+*  CONNECTION EVENTS
+*  When successfully connected
+*/
+mongoose.connection.on( 'connected', function () {
+  console.log( `Mongoose default connection open to ${ dburi }` );
 });
 /*
 *  If the connection throws an error
@@ -33,7 +40,6 @@ process.on( 'SIGINT', function() {
     process.exit( 0 );
   });
 });
-
 /*
 *  Load Models: read all of the files in the models dir and
 *  check if it is a javascript file before requiring it
@@ -44,7 +50,7 @@ fs.readdirSync( models_path ).forEach( function( file ) {
   }
 });
 
-
+// previous method:
 // read all of the files in the models_path and require (run) each of the javascript files
 // fs.readdirSync(models_path).forEach(function(file) {
 //   if(file.indexOf('.js') >= 0) {
