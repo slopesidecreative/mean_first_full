@@ -1,12 +1,12 @@
 
 console.log('routes.js is loaded.');
 
-// var Item =  require('../controllers/item.js');
+/* THE JOB OF ROUTES IS TO CALL THE CORRECT CONTRLLER METHOD BASED ON ROUTE */
+
 var Friends =  require('../controllers/friends.js');
 console.log('Friends conroller: ',Friends);
 
 module.exports = function(app) {
-console.log('routes: ',app);
    // "/"
    // Root - show all
    app.get('/', function (req, res){
@@ -15,7 +15,6 @@ console.log('routes: ',app);
       Friends.show(req,res);
    });
    app.get('/friends', function (req, res){
-      // res.json('welcome to FRIENDS');
       console.log(' GET show /  ');
       Friends.show(req,res);
    });
