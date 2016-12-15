@@ -9,7 +9,7 @@ module.exports = {
 // "/"
 // Root - show all
 show: function (req, res){
-   console.log('ITEM->SHOW');
+   console.log('FRIEND->SHOW');
    Item.find({}, function(err, data) {
       if(err){
          console.log('error ${err}');
