@@ -7,14 +7,12 @@ var Friends =  require('../controllers/friends.js');
 console.log('Friends conroller: ',Friends);
 
 module.exports = function(app) {
-
    // "/"
    // Root - show all
    // TO BE HANDLED BY ANGULAR, right???
    app.get('/', function (req, res){
       res.json('welcome to FRIENDS');
    });
-
    // GET /friends
    // returns all friends
    app.get('/friends', function (req, res){
@@ -48,7 +46,7 @@ module.exports = function(app) {
       DELETE /friends/:id
       Delete: process deleting a friend by ID.
    */
-   app.put('/friends/:id', function (req, res){
+   app.delete('/friends/:id', function (req, res){
       console.log('DELETE /friends/:id');
       Friends.delete(req,res);
    });

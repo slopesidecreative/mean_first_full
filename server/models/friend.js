@@ -4,7 +4,6 @@ console.log('friends.js loaded');
 var mongoose = require('mongoose');
 var validate = require('mongoose-validator');
 
-
 var nameValidator = [
   validate({
     validator: 'isLength',
@@ -17,16 +16,6 @@ var nameValidator = [
     message: 'Name should contain alpha-numeric characters only'
   })
 ];
-
-// schema (no validations)
-// var FriendSchema = new mongoose.Schema({
-//  first_name: String,
-//  last_name: String,
-//  birthday: Date
-// }, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
-// register model
-
-
 
 var FriendSchema = new mongoose.Schema({
       first_name: {
