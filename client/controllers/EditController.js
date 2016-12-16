@@ -2,10 +2,8 @@ app.controller('editController', ['friendsFactory', '$location', '$routeParams',
 
    var _this = this;
    _this.friend = {};
-
-  /* Public Properties */
   _this.controlValue = "Current Name:";
-  /* Public Methods */
+
   _this.getFriend = function() {
      console.log('lets get a friend',rParams.id);
     friendsFactory.show(rParams.id, function passedToFriendFactoryShow(friend) {
@@ -15,8 +13,8 @@ app.controller('editController', ['friendsFactory', '$location', '$routeParams',
   }
 
   _this.updateFriend = function(){
-    userFactory.update(_this.user, rParams.id, function passedToUserFactoryUpdate(userFromFactory){
-      _this.user = userFromFactory;
+    friendsFactory.update(_this.friend, rParams.id, function passedToFriendFactoryUpdate(friendFromFactory){
+      _this.friend = friendFromFactory;
       // what is this?
       _this.controlValue = "Updated Name: "
     });

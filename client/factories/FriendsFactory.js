@@ -26,8 +26,14 @@ app.factory('friendsFactory', ['$http', function($http) {
         }
       });
     };
-    this.update = function(){ // what parameters do we need?
-      // Your code here
+    // TODO THIS NEEDS THE FRIEND OBJECT 
+    this.update = function(id,callback){ // what parameters do we need?
+      $http.put('/friends/:id').then(function(returned_data){
+        console.log(returned_data.data);
+        if (typeof(callback) == 'function'){
+          callback(returned_data.data);
+        }
+      });
     };
 
  //Note: this can be shortened to $http.get('/friends').then(callback);
