@@ -1,10 +1,10 @@
-app.controller('indexController', ['$scope', '$location', function($scope, location) {
+app.controller('indexController', ['$scope','friendsFactory', '$location', function($scope, friendsFactory, location) {
   /* Private Methods */
-  var usersIndex = function() {
+  var friendsIndex = function() {
      console.log('index controller -> usersIndex() called to kick things off...');
-      // userFactory.index(function beingPassedToTheFactoryIndexByThisController(usersFromTheFactory) {
-      //   $scope.users = usersFromTheFactory;
-      // } /* end args passed to userFactor index */ ); //end userFactory method invokation
+      friendsFactory.index(function beingPassedToTheFactoryIndexByThisController(usersFromTheFactory) {
+        $scope.users = usersFromTheFactory;
+      } /* end args passed to userFactor index */ ); //end userFactory method invokation
     } //end usersIndex
 
   /* Scope Methods */
@@ -15,5 +15,5 @@ app.controller('indexController', ['$scope', '$location', function($scope, locat
   console.log("loading the controller");
   //console.log(userFactory);
   //console.log(this);
-  usersIndex();
+  friendsIndex();
 }]);
