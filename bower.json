@@ -1,0 +1,21 @@
+{
+  "name": "first full mean",
+  "homepage": "https://github.com/slopesidecreative/mean_first_full",
+  "authors": [
+    "Erik Clineschmidt <eclineschmidt@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.0",
+    "angular-route": "^1.6.0"
+  }
+}

@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title></title>
-<script type ="text/javascript" src="/static/js/jquery-3.1.1.js"></script>
-<script type ="text/javascript" src="/static/js/main.js"></script>
-</head>
-<body>
+<meta charset="utf-8">
 
-WELCOME
+<script src='angular/angular.js'></script>
+<script src='angular-route/angular-route.js'></script>
+
+<script src='app.js'></script>
+<!-- <script src='/factories/FriendsFactory.js'></script> -->
+<script src='/controllers/IndexController.js'></script>
+<script src='/controllers/EditController.js'></script>
+<script src='/controllers/NewController.js'></script>
+<script src='/config/Routes.js'></script>
+
+<title>Document</title>
+</head>
+
+<body ng-app="app">
+
+<div ng-view>
+</div>
+
+<a href="#!/edit">edit</a><br/>
+<a href="#!/new">new</a>
+
 
 </body>
 
