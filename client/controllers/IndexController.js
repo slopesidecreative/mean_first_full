@@ -9,7 +9,7 @@ app.controller('indexController', ['$scope','friendsFactory', '$location', funct
 
   /* Scope Methods */
   $scope.show = function(user_id) {
-      location.url('/edit/' + user_id);
+      location.url('/friends/' + user_id + '/edit');
     }
     /* on load time */
   console.log("loading the controller");
