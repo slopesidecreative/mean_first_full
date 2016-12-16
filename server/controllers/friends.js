@@ -71,27 +71,24 @@ create: function (req, res){
 // */
 update: function (req, res){
    console.log('FRIEND->UPDATE - EDIT PROCESSING.....');
-   // another way to update a record
+
    Friends.findOne({_id: req.params.id}, function(err, friend){
-
       console.log('FRIENDS CONTROLLER: Found the friend to update! ',friend);
-   // if params, update them here...
-   // for (var key in updateUser) {
-   //   users[idx][key] = updateUser[key];
-   // }
-   //  friend.name = req.params.name;
-   //  friend.age = req.params.age;
+      var birthday = new Date(req.body.birthday);
+      console.log('created birthday:',birthday);
 
-    // then save the updated friend object
-    friend.first_name = req.body.first_name;
+      friend.first_name = req.body.first_name;
+      friend.last_name = req.body.last_name;
+      friend.birthday = birthday;
 
-    friend.save(function(err){
-      if(err){
-         console.log('error updating ${err}');
-         }else{
-         res.redirect('/');
-            }
-      })
+       friend.save(function(err){
+         if(err){
+            console.log('error updating ${err}');
+            }else{
+               console.log('UPDATED FRIEND, NOW TO REDIRECT....');
+            res.json(friend);
+               }
+         })
    })
 },
 /* DELETE /items/:id
