@@ -50,12 +50,15 @@ create: function (req, res){
 // TODO CATCH BIRTHDAY VALUE AND TURN INTO DATE OBJECT???
 
 // TODO VALIDATE INPUTS
+   var birthday = new Date(req.body.birthday);
+   console.log('created birthday:',birthday);
 
-   var friend = new Friend({
+   var friend = new Friends({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      birthday: req.body.birthday
+      birthday: birthday
    });
+   console.log('new friend: ',friend);
    friend.save(function(err){
       if(err){
          console.log('error ${err}');
@@ -69,7 +72,7 @@ create: function (req, res){
 update: function (req, res){
    console.log('FRIEND->UPDATE - EDIT PROCESSING.....');
    // another way to update a record
-   Item.findOne({_id: req.params.id}, function(err, item){
+   Friends.findOne({_id: req.params.id}, function(err, item){
     friend.name = req.params.name;
     friend.age = req.params.age;
     friend.save(function(err){
@@ -84,9 +87,9 @@ update: function (req, res){
 /* DELETE /items/:id
    Process deleting an item by ID.
 */
-destroy: function (req, res){
+delete: function (req, res){
    console.log('FRIEND->DESTROY');
-   Friend.remove(
+   Friends.remove(
       {
          _id: req.params.id
       },
