@@ -2,8 +2,8 @@ app.controller('indexController', ['$scope','friendsFactory', '$location', funct
   /* Private Methods */
   var friendsIndex = function() {
      console.log('index controller -> usersIndex() called to kick things off...');
-      friendsFactory.index(function beingPassedToTheFactoryIndexByThisController(usersFromTheFactory) {
-        $scope.users = usersFromTheFactory;
+      friendsFactory.index(function beingPassedToTheFactoryIndexByThisController(friendsFromTheFactory) {
+        $scope.friends = friendsFromTheFactory;
       } /* end args passed to userFactor index */ ); //end userFactory method invokation
     } //end usersIndex
 

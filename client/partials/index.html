@@ -1,6 +1,6 @@
-<div ng-repeat = "user in users track by $index">
-  <p>Name: {{user.name}}
-    <button ng-click = "show(user._id)">
+<div ng-repeat = "friend in friends track by $index">
+  <p>Name: {{friend.first_name}} {{friend.last_name}}
+    <button ng-click = "show(friend._id)">
       Edit User
     </button>
   </p>
