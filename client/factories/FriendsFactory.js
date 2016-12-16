@@ -33,6 +33,7 @@ app.factory('friendsFactory', ['$http', function($http) {
         // Your code here
     };
     this.show = function(){// what parameters do we need?
+      console.log('yeah, you need THIS CODE HERE');
         // Your code here
     };
     // Sometimes you might not want to make a DB call, and just get the information stored in the factory.

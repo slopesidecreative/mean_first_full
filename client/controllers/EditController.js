@@ -1,14 +1,16 @@
 app.controller('editController', ['friendsFactory', '$location', '$routeParams', function(friendsFactory, $location, rParams) {
 
    var _this = this;
-   _this.user = {};
+   _this.friend = {};
 
   /* Public Properties */
   _this.controlValue = "Current Name:";
   /* Public Methods */
   _this.getFriend = function() {
-    friendsFactory.show(rParams.id, function passedToUserFactoryShow(user) {
-      _this.user = user;
+     console.log('lets get a friend',rParams.id);
+    friendsFactory.show(rParams.id, function passedToUserFactoryShow(friend) {
+      console.log('this is the friend, based on the id: ',friend);
+      _this.friend =friend;
     })
   }
 
