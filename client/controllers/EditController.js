@@ -11,17 +11,14 @@ app.controller('editController', ['friendsFactory', '$location', '$routeParams',
       _this.friend = friend;
     })
   }
-  _this.gotUpdatedFriend = function(updatedFriend){
-     console.log('got updated friend: ', updatedFriend);
-     _this.friend = {};
-     $location.url("/");
- }
+
 
   _this.updateFriend = function(){
     friendsFactory.update(_this.friend, function gotUpdatedFriend(updatedFriend){
       _this.friend = updatedFriend;
       // what is this?
       _this.controlValue = "Updated Name: ";
+       $location.path("/");
     });
   }
   /* on load time */
