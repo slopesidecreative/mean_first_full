@@ -104,7 +104,7 @@ delete: function (req, res){
       if(err){
          console.log('error ${err}');
       }else{
-         res.redirect('/');
+         res.json({"message": "friend deleted"});
       }
    })
 }

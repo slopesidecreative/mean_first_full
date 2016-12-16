@@ -26,11 +26,11 @@ app.factory('friendsFactory', ['$http', function($http) {
     };
 
     this.update = function(friendToUpdate,callback){
-      console.log('FF UPDATE GOT: ', friendToUpdate);
+      //console.log('FF UPDATE GOT: ', friendToUpdate);
       var updateuri = '/friends/' + friendToUpdate._id;
-      console.log('update to this url: ',updateuri);
+      //console.log('update to this url: ',updateuri);
       $http.put(updateuri, friendToUpdate).then(function(returned_data){
-        console.log('got back an updated friend!',returned_data.data);
+        //console.log('got back an updated friend!',returned_data.data);
         if (typeof(callback) == 'function'){
           callback(returned_data.data);
         }
@@ -38,13 +38,19 @@ app.factory('friendsFactory', ['$http', function($http) {
     };
 
     };
-    this.delete = function(){// what parameters do we need?
-        // Your code here
+    this.delete = function(_id,callback){// what parameters do we need?
+      console.log('You said to delete: ', _id);
+      $http.delete('/friends/' + _id).then(function(){
+      //   console.log('so i deleted: ', data);
+        if (typeof(callback) == 'function'){
+          callback();
+        }
+      })
     };
     this.show = function(_id,callback){// what parameters do we need?
-     console.log(' this.show -> get one friend by id');
+     //console.log(' this.show -> get one friend by id');
      $http.get('/friends/' + _id).then(function(returned_data){
-       console.log('got back this one friend: ', returned_data.data);
+       //console.log('got back this one friend: ', returned_data.data);
       friends = returned_data.data;
       callback(friends);
      });
@@ -57,7 +63,7 @@ app.factory('friendsFactory', ['$http', function($http) {
         callback(friend);
     };
   }
-  console.log(new FriendsFactory());
+  //console.log(new FriendsFactory());
   return new FriendsFactory();
 }]);
 

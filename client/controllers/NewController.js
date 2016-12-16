@@ -3,14 +3,14 @@ app.controller('newController', ['friendsFactory','$location', function(friendsF
    _this.friend = {}
 
    _this.newFriendCreatedNowRedirect = function(){
-      console.log('user created redirect called');
+      console.log('FRIEND created redirect called');
       _this.friend = {};
       $location.path("/index");
    }
 
    _this.addFriend = function(){
       console.log('make me a new friend: ', _this.friend);
-      friendsFactory.create( _this.friend, _this.newFriendCreatedNowRedirect );
+      friendsFactory.create( _this.friend, _this.newFriendCreatedNowRedirect() );
    }
 
 }]);
