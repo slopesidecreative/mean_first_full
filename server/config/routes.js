@@ -38,7 +38,7 @@ module.exports = function(app) {
       POST /items/:id
       PUT: process editing a friend by ID.
    */
-   app.put('/friends/:id', function (req, res){
+   app.post('/friends/:id', function (req, res){
       console.log('POST update /items/update');
       Friends.update(req,res);
    });

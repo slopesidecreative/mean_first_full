@@ -1,7 +1,5 @@
 console.log('friends factory js file loaded....');
 
-
-console.log('Friends Factory');
 app.factory('friendsFactory', ['$http', function($http) {
   // constructor for our factory
   var friends = [];
@@ -26,14 +24,24 @@ app.factory('friendsFactory', ['$http', function($http) {
         }
       });
     };
-    // TODO THIS NEEDS THE FRIEND OBJECT 
-    this.update = function(id,callback){ // what parameters do we need?
-      $http.put('/friends/:id').then(function(returned_data){
-        console.log(returned_data.data);
+    // TODO THIS NEEDS THE FRIEND OBJECT
+    this.update = function(friendToUpdate,callback){ // what parameters do we need?
+      console.log('FF UPDATE GOT: ', friendToUpdate);
+      var updateuri = '/friends/' + friendToUpdate._id;
+      console.log('update to this url: ',updateuri);
+      $http.post(updateuri, friendToUpdate).then(function(returned_data){
+        console.log('got back an updated friend!',returned_data.data);
         if (typeof(callback) == 'function'){
           callback(returned_data.data);
         }
-      });
+         });
+      // $http.put('/friends/'  + friendToUpdate._id).then(function(returned_data){
+      //
+      //   console.log(returned_data.data);
+      //   if (typeof(callback) == 'function'){
+      //     callback(returned_data.data);
+      //   }
+      // });
     };
 
  //Note: this can be shortened to $http.get('/friends').then(callback);

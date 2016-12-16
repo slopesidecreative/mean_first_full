@@ -72,9 +72,19 @@ create: function (req, res){
 update: function (req, res){
    console.log('FRIEND->UPDATE - EDIT PROCESSING.....');
    // another way to update a record
-   Friends.findOne({_id: req.params.id}, function(err, item){
-    friend.name = req.params.name;
-    friend.age = req.params.age;
+   Friends.findOne({_id: req.params.id}, function(err, friend){
+
+      console.log('FRIENDS CONTROLLER: Found the friend to update! ',friend);
+   // if params, update them here...
+   // for (var key in updateUser) {
+   //   users[idx][key] = updateUser[key];
+   // }
+   //  friend.name = req.params.name;
+   //  friend.age = req.params.age;
+
+    // then save the updated friend object
+    friend.first_name = req.body.first_name;
+
     friend.save(function(err){
       if(err){
          console.log('error updating ${err}');
