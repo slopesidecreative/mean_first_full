@@ -1,4 +1,36 @@
-<div ng-repeat = "friend in friends track by $index">
+
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>_ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Birthday</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat = "friend in friends track by $index">
+      <td>{{friend._id}}</td>
+      <td>{{friend.first_name}}</td>
+      <td>{{friend.last_name}}</td>
+      <td>{{friend.birthday | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</td>
+      <td ng-click="show(_id)">Show</td>
+      <td ng-click="update(friend._id)">Edit</td>
+      <td ng-click="deleteFriend(friend._id)">Delete</td>
+    </tr>
+</tbody>
+</table>
+<br/>
+
+
+<!-- <div ng-repeat = "friend in friends track by $index">
   <p>Name: {{friend.first_name}} {{friend.last_name}}
     <button ng-click = "show(friend._id)">
       EDIT FRIEND
@@ -9,7 +41,7 @@
   DELETE FRIEND
  </button>
 
-</div>
+</div> -->
 <br/>
 <a ng-href = '#!/new'>
   <button>

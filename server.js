@@ -8,6 +8,7 @@ var root          =  __dirname;
 app.use(bp.json());
 
 app.use(express.static(root + '/client/'));
+app.use(express.static(root + '/client/static/'));
 app.use(express.static(root + '/bower_components'));
 
 app.set('views', root + '/client/static');

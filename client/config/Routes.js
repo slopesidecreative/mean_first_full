@@ -10,6 +10,11 @@ app.config(function($routeProvider) {
       controller: 'editController',
       controllerAs: 'eC'
     })
+    .when('/friends/:id', {
+      templateUrl: '/partials/show.html',
+      controller: 'showController',
+      controllerAs: 'sC'
+    })
     .when('/new', {
       templateUrl: '/partials/new.html',
       controller: 'newController',

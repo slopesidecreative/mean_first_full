@@ -1,5 +1,6 @@
-app.controller('indexController', ['$scope','friendsFactory', '$location', function($scope, friendsFactory, location) {
+app.controller('indexController', ['$scope','friendsFactory', '$location','moment', function($scope, friendsFactory, location, moment) {
 
+console.log(moment);
   /* Private Methods */
   var friendsIndex = function() {
      console.log('index controller -> usersIndex() called to kick things off...');
@@ -16,8 +17,12 @@ $scope.deleteFriend = function(_id){
    })
 }
 
+$scope.show = function(_id){
+   location.path('/friends/' + id );
+}
+
   /* Scope Methods */
-  $scope.show = function(user_id) {
+  $scope.update = function(user_id) {
       location.path('/friends/' + user_id + '/edit');
     }
     /* on load time */
