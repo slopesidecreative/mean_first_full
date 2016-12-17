@@ -46,13 +46,8 @@ show: function (req, res){
 */
 create: function (req, res){
    console.log('FRIEND->CREATE');
-
-// TODO CATCH BIRTHDAY VALUE AND TURN INTO DATE OBJECT???
-
 // TODO VALIDATE INPUTS
    var birthday = new Date(req.body.birthday);
-   console.log('created birthday:',birthday);
-
    var friend = new Friends({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
@@ -63,7 +58,7 @@ create: function (req, res){
       if(err){
          console.log('error ${err}');
       }
-      res.redirect('/');
+      res.json(friend);
    })
 },
 /*    PUT /friends/:id
@@ -86,7 +81,7 @@ update: function (req, res){
             console.log('error updating ${err}');
             }else{
                console.log('UPDATED FRIEND, NOW TO REDIRECT....');
-            res.json(friend);
+            res.json({"message":"friend created"});
                }
          })
    })
