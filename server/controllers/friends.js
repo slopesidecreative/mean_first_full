@@ -70,7 +70,7 @@ update: function (req, res){
    Friends.findOne({_id: req.params.id}, function(err, friend){
       console.log('FRIENDS CONTROLLER: Found the friend to update! ',friend);
       var birthday = new Date(req.body.birthday);
-      console.log('created birthday:',birthday);
+      // console.log('created birthday:',birthday);
 
       friend.first_name = req.body.first_name;
       friend.last_name = req.body.last_name;
@@ -103,6 +103,5 @@ delete: function (req, res){
       }
    })
 }
-
 
 } // exports
