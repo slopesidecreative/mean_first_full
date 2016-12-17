@@ -1,7 +1,4 @@
 
-
-
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -12,36 +9,22 @@
       <th>Show</th>
       <th>Edit</th>
       <th>Delete</th>
-
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat = "friend in friends track by $index">
+    <tr ng-repeat = "friend in friends | filter:searchTerm | orderBy:'birthday' ">
       <td>{{friend._id}}</td>
       <td>{{friend.first_name}}</td>
       <td>{{friend.last_name}}</td>
-      <td>{{friend.birthday | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</td>
-      <td ng-click="show(_id)">Show</td>
+      <td>{{friend.birthday | amDateFormat: 'YYYY-MM-DD' }}</td>
+      <td ng-click="show(friend._id)">Show</td>
       <td ng-click="update(friend._id)">Edit</td>
-      <td ng-click="deleteFriend(friend._id)">Delete</td>
+      <td ng-click="delete(friend._id)">Delete</td>
     </tr>
 </tbody>
 </table>
 <br/>
-
-
-<!-- <div ng-repeat = "friend in friends track by $index">
-  <p>Name: {{friend.first_name}} {{friend.last_name}}
-    <button ng-click = "show(friend._id)">
-      EDIT FRIEND
-    </button>
-  </p>
-
- <button ng-click="deleteFriend(friend._id)">
-  DELETE FRIEND
- </button>
-
-</div> -->
+<input type="search" ng-model="searchTerm"></input>
 <br/>
 <a ng-href = '#!/new'>
   <button>
