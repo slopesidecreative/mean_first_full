@@ -1,12 +1,12 @@
 {
-  "name": "first full mean",
-  "homepage": "https://github.com/slopesidecreative/mean_first_full",
+  "name": "basic_mongoose_app",
+  "description": "",
+  "main": "server.js",
   "authors": [
     "Erik Clineschmidt <eclineschmidt@gmail.com>"
   ],
-  "description": "",
-  "main": "",
-  "license": "MIT",
+  "license": "ISC",
+  "homepage": "https://github.com/slopesidecreative/mean_login",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,9 +15,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.6.0",
+    "angular-moment": "^1.0.1",
     "angular-route": "^1.6.0",
     "bootstrap": "^3.3.7",
-    "angular-moment": "^1.0.1"
+    "angular-cookies": "^1.6.0"
   }
 }

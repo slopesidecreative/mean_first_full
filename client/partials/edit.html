@@ -8,7 +8,7 @@
       <label for="last_name">Last Name</label><br/>
      <input type="text" name="last_name" ng-model = 'eC.friend.last_name' placeholder = '{{eC.friend.last_name}}'><br/>
      <label for="birthday">Birthday</label><br/>
-     <input type="date" name="birthday" ng-model = 'eC.friend.birthday' placeholder = '{{eC.friend.birthday}}'><br/>
+     <input type="date" name="birthday" ng-model = 'eC.friend.created_birthday'  value="{{eC.friend.created_birthday |  amDateFormat: 'YYYY-MM-DD'}}" required><br/>
      <br/>
      <input type="hidden" ng-model = 'eC.friend._id' value = '{{eC.friend._id}}'>
      <input type="submit"  value="Update">
