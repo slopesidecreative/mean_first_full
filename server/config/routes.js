@@ -5,13 +5,61 @@ console.log('routes.js is loaded.');
 var Friends =  require('../controllers/friends.js');
 console.log('Friends conroller: ', Friends);
 
+var Users =  require('../controllers/users.js');
+console.log('Users conroller: ', Users);
+
 module.exports = function(app) {
+
+/* ROOT    --------------------------------------------------- */
    // "/"
    // Root - show all
-   // TO BE HANDLED BY ANGULAR...
+   // HANDLED BY ANGULAR...
    app.get('/', function (req, res){
       res.json('welcome to FRIENDS');
    });
+
+   /* USERS --------------------------------------------------- */
+
+      // GET /users
+      // returns all users
+      app.get('/users', function (req, res){
+         console.log(' GET index /  ');
+         Users.index(req,res);
+      });
+      /* GET /users/:id
+         Show: view a single user by ID.
+      */
+      app.get('/users/:id', function (req, res){
+         console.log('GET show /users/:id ', req.params.id);
+         Users.show(req,res);
+      });
+      /* POST
+         /users
+         Create a new user based on form submission.
+      */
+      app.post('/users', function (req, res){
+         console.log('POST create /users');
+         Users.create(req,res);
+      });
+      /*
+         POST /users/:id
+         PUT: process editing a user by ID.
+      */
+      app.put('/users/:id', function (req, res){
+         console.log('PUT user update!!');
+         Users.update(req,res);
+      });
+      /*
+         DELETE /users/:id
+         Delete: process deleting a user by ID.
+      */
+      app.delete('/users/:id', function (req, res){
+         console.log('DELETE /users/:id');
+         Users.delete(req,res);
+      });
+
+/* FRIENDS --------------------------------------------------- */
+
    // GET /friends
    // returns all friends
    app.get('/friends', function (req, res){

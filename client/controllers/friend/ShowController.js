@@ -5,7 +5,17 @@ app.controller('showController', ['friendsFactory','$location','$routeParams', f
    _this.getFriend = function() {
       friendsFactory.show($routeParams.id, function passedToFriendFactoryShow(friend) {
       //console.log('this is the friend, based on the id: ',friend);
-      _this.friend = friend;
+      if ( friend.hasOwnProperty('errors') ) {
+         // handle errors
+         console.log('ERRORS', friend.errors);
+         alert('Error! Could not create user!');
+         $location.path("/");
+      }else{
+         friend.created_birthday = new Date(friend.birthday);
+         _this.friend = friend;
+
+      }
+
     })
   }
    _this.getFriend();

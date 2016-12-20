@@ -1,14 +1,14 @@
 console.log('friends factory js file loaded....');
 
 app.factory('friendsFactory', ['$http', function($http) {
-  // constructor for our factory
+  // constructor
   var friends = [];
   var friend = {};
 
   function FriendsFactory(){
     var _this = this;
 
-    this.index = function(callback){
+    _this.index = function(callback){
       //call this method if you want to update or set the friends variable
       $http.get('/friends').then(function(returned_data){
         console.log(returned_data.data);
@@ -16,21 +16,26 @@ app.factory('friendsFactory', ['$http', function($http) {
         callback(friends);
       });
 
-    this.create = function(newfriend,callback){
+    _this.create = function(newfriend,callback){
       $http.post('/friends', newfriend).then(function(returned_data){
-        console.log(returned_data.data);
+        //console.log(returned_data.data);
+        // TODO: CHECK IF THE RETURNED DATA IS AN ERROR
+
+        // pass the returned friend to the callback
         if (typeof(callback) == 'function'){
           callback(returned_data.data);
         }
       });
     };
 
-    this.update = function(friendToUpdate,callback){
+    _this.update = function(friendToUpdate,callback){
       //console.log('FF UPDATE GOT: ', friendToUpdate);
       var updateuri = '/friends/' + friendToUpdate._id;
       //console.log('update to this url: ',updateuri);
       $http.put(updateuri, friendToUpdate).then(function(returned_data){
         //console.log('got back an updated friend!',returned_data.data);
+
+        // TODO: CHECK IF THE RETURNED DATA IS AN ERROR
         if (typeof(callback) == 'function'){
           callback(returned_data.data);
         }
@@ -38,10 +43,11 @@ app.factory('friendsFactory', ['$http', function($http) {
     };
 
     };
-    this.delete = function(_id,callback){// what parameters do we need?
+    _this.delete = function(_id,callback){// what parameters do we need?
       console.log('You said to delete: ', _id);
-      $http.delete('/friends/' + _id).then(function(){
-      //   console.log('so i deleted: ', data);
+      $http.delete('/friends/' + _id).then(function(returned_data){
+console.log('KKAKAKAKAKAKAKAKAKAKAdelted data: ', returned_data.data);
+      // TODO: CHECK IF THE RETURNED DATA IS AN ERROR
         if (typeof(callback) == 'function'){
           callback();
         }
@@ -50,7 +56,9 @@ app.factory('friendsFactory', ['$http', function($http) {
     this.show = function(_id,callback){// what parameters do we need?
      //console.log(' this.show -> get one friend by id');
      $http.get('/friends/' + _id).then(function(returned_data){
-       //console.log('got back this one friend: ', returned_data.data);
+      //console.log('got back this one friend: ', returned_data.data);
+
+      // TODO: CHECK IF THE RETURNED DATA IS AN ERROR
       friends = returned_data.data;
       callback(friends);
      });
